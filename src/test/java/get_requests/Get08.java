@@ -51,12 +51,12 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         Map<String, Object> actualData = response.as(HashMap.class);
 
         //Do assertion
-        assertEquals(expectedData.get("userId"),actualData.get("userId"));
-        assertEquals(expectedData.get("title"),actualData.get("title"));
-        assertEquals(expectedData.get("completed"),actualData.get("completed"));
-        assertEquals(expectedData.get("StatusCode"),response.getStatusCode());
-        assertEquals(expectedData.get("Via"),response.getHeader("Via"));
-        assertEquals(expectedData.get("Server"),response.getHeader("Server"));
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        assertEquals(expectedData.get("StatusCode"), response.getStatusCode());
+        assertEquals(expectedData.get("Via"), response.getHeader("Via"));
+        assertEquals(expectedData.get("Server"), response.getHeader("Server"));
 
     }
 
@@ -65,12 +65,11 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         //1.set the url
         spec.pathParams("first", "todos", "second", 2);
         //2.set the expected data
-        JsonPlaceHolderTestData expectedData=new JsonPlaceHolderTestData();
-      Map<String,Object> expectedDataMap=  expectedData.expectedDataWithAllKeys(1,"quis ut nam facilis et officia qui",false);
-expectedDataMap.put("StatusCode",200);
-expectedDataMap.put("Via","1.1 vegur");
-expectedDataMap.put("Server","cloudflare");
-
+        JsonPlaceHolderTestData expectedData = new JsonPlaceHolderTestData();
+        Map<String, Object> expectedDataMap = expectedData.expectedDataWithAllKeys(1, "quis ut nam facilis et officia qui", false);
+        expectedDataMap.put("StatusCode", 200);
+        expectedDataMap.put("Via", "1.1 vegur");
+        expectedDataMap.put("Server", "cloudflare");
 
 
         //3.Send the request and get the response
@@ -81,6 +80,12 @@ expectedDataMap.put("Server","cloudflare");
 
         //4.Do assertion
 
+        assertEquals(expectedDataMap.get("userId"), actualData.get("userId"));
+        assertEquals(expectedDataMap.get("title"), actualData.get("title"));
+        assertEquals(expectedDataMap.get("completed"), actualData.get("completed"));
+        assertEquals(expectedDataMap.get("StatusCode"), response.getStatusCode());
+        assertEquals(expectedDataMap.get("Via"), response.getHeader("Via"));
+        assertEquals(expectedDataMap.get("Server"), response.getHeader("Server"));
 
     }
 }
