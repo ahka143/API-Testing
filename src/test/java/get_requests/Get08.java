@@ -66,8 +66,10 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         spec.pathParams("first", "todos", "second", 2);
         //2.set the expected data
         JsonPlaceHolderTestData expectedData=new JsonPlaceHolderTestData();
-        expectedData.expectedDataWithAllKeys(1,"quis ut nam facilis et officia qui",false);
-
+      Map<String,Object> expectedDataMap=  expectedData.expectedDataWithAllKeys(1,"quis ut nam facilis et officia qui",false);
+expectedDataMap.put("StatusCode",200);
+expectedDataMap.put("Via","1.1 vegur");
+expectedDataMap.put("Server","cloudflare");
 
 
 
