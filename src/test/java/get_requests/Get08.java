@@ -3,6 +3,7 @@ package get_requests;
 import base_Urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import test_data.JsonPlaceHolderTestData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +65,10 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         //1.set the url
         spec.pathParams("first", "todos", "second", 2);
         //2.set the expected data
+        JsonPlaceHolderTestData expectedData=new JsonPlaceHolderTestData();
+        expectedData.expectedDataWithAllKeys(1,"quis ut nam facilis et officia qui",false);
+
+
 
 
         //3.Send the request and get the response
