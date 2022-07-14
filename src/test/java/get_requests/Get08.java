@@ -46,11 +46,11 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         expectedData.put("Via", "1.1 vegur");
         expectedData.put("Server", "cloudflare");
 
-        //Send the request and get the response
+        //3.Send the request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}");
         Map<String, Object> actualData = response.as(HashMap.class);
 
-        //Do assertion
+        //4.Do assertion
         assertEquals(expectedData.get("userId"), actualData.get("userId"));
         assertEquals(expectedData.get("title"), actualData.get("title"));
         assertEquals(expectedData.get("completed"), actualData.get("completed"));
