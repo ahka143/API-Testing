@@ -4,6 +4,8 @@ import base_Urls.HerOkuAppBaseUrl;
 import org.junit.Test;
 import test_data.HerokuappTestData;
 
+import java.util.Map;
+
 public class Post02 extends HerOkuAppBaseUrl {
     /*
     Given
@@ -40,12 +42,15 @@ public class Post02 extends HerOkuAppBaseUrl {
     @Test
     public void post01() {
         //1.set the url
-        spec.pathParam("first","booking");
+        spec.pathParam("first", "booking");
 
         //2.set the expected data
 
-        HerokuappTestData herokuappTestData=new HerokuappTestData();
-
+        HerokuappTestData herokuapp = new HerokuappTestData();
+        Map<String, String> bookingDatesMap =
+                herokuapp.bookingDatesSetup("2021-09-09", "2021-09-21");
+        Map<String, Object> expectedDataMap =
+                herokuapp.expectedDataSetup("John", "Doe", 11111, true, bookingDatesMap);
 
     }
 }
