@@ -58,7 +58,7 @@ public class Post02 extends HerOkuAppBaseUrl {
         Map<String, Object> expectedDataMap =
                 herokuapp.expectedDataSetup("Ahmet", "Kaya", 11111, true, bookingDatesMap);
 
-        //3.send he request and get the  response
+        //3.send the post request and get the  response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedDataMap).post("/{first}");
         response.prettyPrint();
         //4.Do assertion
