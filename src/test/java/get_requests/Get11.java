@@ -5,6 +5,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static io.restassured.RestAssured.*;
@@ -52,7 +53,7 @@ public class Get11 extends GorestBaseUrl {
                 assertThat().
                 body("meta.pagination.limit", equalTo(10),
                         "meta.pagination.links.current", equalTo("https://gorest.co.in/public/v1/users?page=1"),
-                        "data.id", hasSize(10), "data.status", hasItem("active"), "data.name", hasItems("Aalok Acharya DDS", "Acharyasuta Chattopadhyay DC", "Shresth Nehru"));
+                        "data.id", hasSize(10), "data.status", hasItem("active"), "data.name", hasItems("Mohinder Namboothiri", "Chitramala Sethi", "Swara Mishra"));
         // "The female users are more  than male users or equals" 1.yol:
         JsonPath json = response.jsonPath();
         List<String> gender = json.getList("data.gender");
@@ -66,12 +67,12 @@ public class Get11 extends GorestBaseUrl {
         }
         System.out.println("numberOfFemales = " + numberOfFemales);
 
-        assertTrue(numberOfFemales >= gender.size() - numberOfFemales);
+        assertTrue(numberOfFemales <= gender.size() - numberOfFemales);
         //2.yol
 
       List<String> femaleList=  json.getList("data.findAll{it.gender=='female'}.gender");
       List<String> maleList=  json.getList("data.findAll{it.gender=='male'}.gender");
-      assertTrue(femaleList.size()>maleList.size());
+      assertTrue(femaleList.size()<maleList.size());
 
     }
 }
