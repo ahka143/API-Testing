@@ -1,6 +1,7 @@
 package get_requests;
 
 import base_Urls.AutomationPractiseBaseUrl;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -14,10 +15,12 @@ public class GetDeneme extends AutomationPractiseBaseUrl {
         spec.pathParam("first","productsList");
 
         //2.set the expected data
+
         //3.send the request and get the response
-        Response response = given().spec(spec).when().get("/{first}");
+        Response response = given().spec(spec).contentType(ContentType.JSON).when().get("/{first}");
         response.prettyPrint();
         //4. do assertion
+        response.then().assertThat().statusCode(200);
 
     }
 }

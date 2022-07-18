@@ -1,6 +1,7 @@
 package get_requests;
 
 import base_Urls.JsonPlaceHolderBaseUrl;
+import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -63,6 +64,8 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
         List<String> ids3 = jsonPath.getList("findAll{it.id<5}.title");
         System.out.println(ids3);
         assertTrue(ids3.contains("delectus aut autem"));
+
+
 
     }
 }
