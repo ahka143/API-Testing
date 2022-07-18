@@ -3,7 +3,8 @@ package base_Urls;
 import java.util.List;
 import java.util.Map;
 
-public class PetStorePojo {
+public class
+PetStorePojo {
 
     private int id;
     private Map<String,Object> category;
