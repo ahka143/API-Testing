@@ -44,10 +44,10 @@ public class Post03Pojo extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
         //4-Do assertion
         JsonPlaceHolderPojo actualBody = response.as(JsonPlaceHolderPojo.class);
-        //  assertEquals(requestBody.getUserId(), actualBody.getUserId());
-        //  assertEquals(requestBody.getTitle(), actualBody.getTitle());
-        //  assertEquals(requestBody.getCompleted(), actualBody.getCompleted());
+          assertEquals(requestBody.getUserId(), actualBody.getUserId());
+          assertEquals(requestBody.getTitle(), actualBody.getTitle());
+          assertEquals(requestBody.getCompleted(), actualBody.getCompleted());
 
-        assertEquals(requestBody.toString(), actualBody.toString());
+       // assertEquals(requestBody.toString(), actualBody.toString());
     }
 }
