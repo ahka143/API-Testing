@@ -36,6 +36,9 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
         //1.Set the Url
         spec.pathParam("first", "todos");
         //2.Set the expeted data
+
+
+
         //3.Send the request and get the response
         Response response = given().spec(spec).get("{first}");
         //response.prettyPrint();
