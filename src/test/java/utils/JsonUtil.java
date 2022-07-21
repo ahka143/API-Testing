@@ -15,11 +15,11 @@ public class JsonUtil {
     }
 
     //1.Method: Json datasini Java Objesine cevirir.(De-Serialization)
-    public static <T> T convertJsonJavaObject(String json, Class<T> cls) {
+    public static <T> T convertJsonToJavaObject(String json, Class<T> cls) {
         T javaResult = null;
 
         try {
-            mapper.readValue(json, cls);
+         javaResult=   mapper.readValue(json, cls);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -30,7 +30,7 @@ public class JsonUtil {
 
     //2.Method : Java objesini Json Dataya cevirir(Serialization)
 
-    public String convertJavaObjectToJson(Object obj) {
+    public static String convertJavaObjectToJson(Object obj) {
 
         String jsonresult = null;
         try {
