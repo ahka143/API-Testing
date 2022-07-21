@@ -41,7 +41,7 @@ public class Get16 extends DummyBasuUrl {
         //3.step: send the get request and get the response
 
         Response response = given().spec(spec).accept(ContentType.JSON).when().get("/{first}");
-        response.prettyPrint();
+
 
 
         //4.step: Do assertion
@@ -55,12 +55,22 @@ public class Get16 extends DummyBasuUrl {
         //  iv) The greatest age is 66
 
         JsonPath jsonPath=response.jsonPath();
-      List<String> employeesAgeList=jsonPath.getList("data.employee_age");
+      List<Integer> employeesAgeList=jsonPath.getList("data.employee_age");
         Collections.sort(employeesAgeList);
-        assertEquals()
-        System.out.println("employeesAgeList = " + employeesAgeList);
+       assertTrue(employeesAgeList.get(employeesAgeList.size()-1)==66);
+        System.out.println("employeesAgeList = " + employeesAgeList.get(0));
         //   v) The name of the lowest age is "Tatyana Fitzpatrick"
+      List<String> lowestAgeList= jsonPath.getList("data.findAll{it.employee_age== "+employeesAgeList.get(0)+"}.employee_name");
+        System.out.println("lowestAgeList = " + lowestAgeList);
+        assertEquals("Tatyana Fitzpatrick",lowestAgeList.get(0));
         //  vi) Total salary of all employees is 6,644,770
+
+        List<Integer> employeesSalaryList=jsonPath.getList("data.employee_salary");
+        System.out.println("employeesSalaryList = " + employeesSalaryList);
+      Integer totalSalary=  employeesSalaryList.stream().reduce(Integer::sum).get();
+        System.out.println("totalSalary = " + totalSalary);
+
+        assertEquals(6644770, (int) totalSalary);
 
     }
 }
