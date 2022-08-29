@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import org.testng.asserts.SoftAssert;
 import pojos.BookingPojo;
+import test_data.HerokuappTestData;
 import utils.JsonUtil;
 
 import static io.restassured.RestAssured.*;
@@ -38,18 +39,8 @@ Given
         spec.pathParams("first","booking","second",22);
 
         //2.step: set the expected data
-
-        String expectedData="           {\n" +
-                "    \"firstname\": \"Oliver\",\n" +
-                "    \"lastname\": \"Smith\",\n" +
-                "    \"totalprice\": 100,\n" +
-                "    \"depositpaid\": true,\n" +
-                "    \"bookingdates\": {\n" +
-                "        \"checkin\": \"2022-07-18\",\n" +
-                "        \"checkout\": \"2022-07-19\"\n" +
-                "    },\n" +
-                "    \"additionalneeds\": \"Breakfast\"\n" +
-                "}";
+      HerokuappTestData herokuappTestData=new HerokuappTestData();
+        String expectedData=herokuappTestData.herokuAppjsonToString("Oliver","Smith",100,true,"2022-07-18","2022-07-19","Breakfast");
 
       BookingPojo expecteddataPojo=  JsonUtil.convertJsonToJavaObject(expectedData, BookingPojo.class);
 
@@ -59,14 +50,14 @@ Given
       //4.step:Do assertion
         BookingPojo actualdataPojo=  JsonUtil.convertJsonToJavaObject(response.asString(), BookingPojo.class);
 
-        assertEquals(200,response.getStatusCode());
-        assertEquals(expecteddataPojo.getFirstname(),actualdataPojo.getFirstname());
-        assertEquals(expecteddataPojo.getLastname(),actualdataPojo.getLastname());
-        assertEquals(expecteddataPojo.getTotalprice(),actualdataPojo.getTotalprice());
-        assertEquals(expecteddataPojo.getDepositpaid(),actualdataPojo.getDepositpaid());
-        assertEquals(expecteddataPojo.getAdditionalneeds(),actualdataPojo.getAdditionalneeds());
-        assertEquals(expecteddataPojo.getBookingdates().getCheckin(),actualdataPojo.getBookingdates().getCheckin());
-        assertEquals(expecteddataPojo.getBookingdates().getCheckout(),actualdataPojo.getBookingdates().getCheckout());
+//        assertEquals(200,response.getStatusCode());
+//        assertEquals(expecteddataPojo.getFirstname(),actualdataPojo.getFirstname());
+//        assertEquals(expecteddataPojo.getLastname(),actualdataPojo.getLastname());
+//        assertEquals(expecteddataPojo.getTotalprice(),actualdataPojo.getTotalprice());
+//        assertEquals(expecteddataPojo.getDepositpaid(),actualdataPojo.getDepositpaid());
+//        assertEquals(expecteddataPojo.getAdditionalneeds(),actualdataPojo.getAdditionalneeds());
+//        assertEquals(expecteddataPojo.getBookingdates().getCheckin(),actualdataPojo.getBookingdates().getCheckin());
+//        assertEquals(expecteddataPojo.getBookingdates().getCheckout(),actualdataPojo.getBookingdates().getCheckout());
 
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertEquals(200,response.getStatusCode());

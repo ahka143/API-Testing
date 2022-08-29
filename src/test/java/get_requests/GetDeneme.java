@@ -23,8 +23,6 @@ public class GetDeneme extends AutomationPractiseBaseUrl {
         //4. do assertion
       //  response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
 
-         JsonObject jsonObject=   response.as(JsonObject.class);
-        System.out.println(jsonObject);
 
 
     }

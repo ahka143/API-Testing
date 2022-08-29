@@ -25,14 +25,24 @@ public class JsonPlaceHolderTestData {
         return expectedData;
     }
 
-    public String sonPlaceHolderjsonToString(Integer userId,String title,Boolean completed){
+    public String jsonPlaceHolderjsonToString(Integer userId,String title,Boolean completed){
         String expectedData="{\n" +
                 "\"userId\": "+userId+",\n" +
-                "\"id\": 198,\n" +
                 "\"title\": \""+title+"\",\n" +
                 "\"completed\": "+completed+"\n" +
                 " }";
        return expectedData;
+    }
+
+    public String deneme(Integer userId,String title,Boolean completed){
+
+        String aaa="{\n" +
+                "\"userId\": "+userId+",\n" +
+                "\"title\": \""+title+"\",\n" +
+                "\"completed\": "+completed+"\n" +
+                "}";
+
+        return aaa;
     }
 
 

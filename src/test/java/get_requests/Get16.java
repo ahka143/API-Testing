@@ -28,6 +28,26 @@ public class Get16 extends DummyBasuUrl {
                    vi) Total salary of all employees is 6,644,770
     */
 
+    /*
+
+    Given
+         URL: https://dummy.restapiexample.com/api/v1/employees
+    When
+         User send Get request to Url
+    Then
+         Status code is 200
+    And
+        There are 24 employees
+    And
+        "Tiger Nixon" and "Garrett Winters" are among the employees
+    And
+        The greatest age is 66
+    And
+        The name of the lowest age is "Tatyana Fitzpatrick"
+    And
+         Total salary of all employees is 6,644,770
+     */
+
     @Test
     public void get01() {
 
@@ -58,7 +78,7 @@ public class Get16 extends DummyBasuUrl {
       List<Integer> employeesAgeList=jsonPath.getList("data.employee_age");
         Collections.sort(employeesAgeList);
        assertTrue(employeesAgeList.get(employeesAgeList.size()-1)==66);
-        System.out.println("employeesAgeList = " + employeesAgeList.get(0));
+        System.out.println("employeesAgeList = " + employeesAgeList);
         //   v) The name of the lowest age is "Tatyana Fitzpatrick"
       List<String> lowestAgeList= jsonPath.getList("data.findAll{it.employee_age== "+employeesAgeList.get(0)+"}.employee_name");
         System.out.println("lowestAgeList = " + lowestAgeList);
@@ -66,10 +86,9 @@ public class Get16 extends DummyBasuUrl {
         //  vi) Total salary of all employees is 6,644,770
 
         List<Integer> employeesSalaryList=jsonPath.getList("data.employee_salary");
-        System.out.println("employeesSalaryList = " + employeesSalaryList);
+
       Integer totalSalary=  employeesSalaryList.stream().reduce(Integer::sum).get();
         System.out.println("totalSalary = " + totalSalary);
-
         assertEquals(6644770, (int) totalSalary);
 
     }
